@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            width: 500px;
+            height: 300px;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        ul li {
+            width: 50px;
+            height: 50px;
+            margin: 15px;
+            border: 2px solid #fff;
+        }
+
+        .active {
+            border-color: brown;
+        }
+
+        ul li img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image/image01.jpg" alt="" id="bigImg">
+    <ul>
+        <li class="active">
+            <a href="">
+                <img src="https://images8.alphacoders.com/524/thumb-1920-524083.jpg" alt="" class="smallImg">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <img src="https://images3.alphacoders.com/871/thumb-1920-871970.jpg" alt="" class="smallImg">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <img src="https://images.alphacoders.com/302/thumb-1920-302781.jpg" alt="" class="smallImg">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <img src="https://images5.alphacoders.com/920/thumb-1920-920978.jpg" alt="" class="smallImg">
+            </a>
+        </li>
+    </ul>
+
+    <script>
+        var bigImg = document.getElementById('bigImg');
+        var smallImg = document.getElementsByClassName('smallImg');
+
+        for (var i = 0; i < smallImg.length; i++) {
+            smallImg[i].onmouseover = function () {
+                for (var j = 0; j < smallImg.length; j++) {
+                    smallImg[j].parentNode.parentNode.setAttribute('class', '');
+                }
+                var imgSrc = this.getAttribute('src');
+                bigImg.setAttribute('src', imgSrc);
+                this.parentNode.parentNode.setAttribute('class', 'active');
+            }
+        }
+    </script>
+</body>
+
+</html>

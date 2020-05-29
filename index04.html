@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+	<script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-size: 16px;
+			}
+			
+			.main {
+				 background-image: linear-gradient(to bottom right, #ecf0f1 , #9b59b6);
+				display: flex;
+				height: 100vh;
+				width: 100vw;
+				overflow: hidden;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+			.main h3{
+				margin-bottom: 20px;
+				font-size: 24px;
+				
+			}
+			
+			.main .container {
+				width: 400px;
+				overflow: hidden;
+				text-align: center;
+				background: #ddd;
+				padding: 30px;
+				border-radius: 10px;
+				box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+			
+			}
+			.main .container *{
+				margin-bottom: 15px;
+				
+			}
+			.main .container .container-search{
+				
+				display: flex;
+				height: 30px;
+				align-items: center;
+				justify-content: center;
+				padding: 15px 0;
+			}
+			.main .container .container-search #text{
+				
+				outline: none;
+				padding: 0.75rem 0;
+				border: none;
+				
+				text-indent: 1rem;
+			}
+			.main .container .container-search #btn{
+				background: #f1c40f;
+				padding: 0.75rem 1.5rem;
+				outline: none;
+			
+				border: none;
+			}
+			.main .container .container-search #btn:hover{
+				background: #f39c12;
+				color: #fff;
+			}
+			
+			.textarea {
+				width: 100%;
+				border: none;
+				border-radius: 10px;
+				outline: none;
+				text-align: left;
+				height: 150px;
+				line-height: 2rem;
+				resize: none;
+				box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<h3 class="main-top">查询素数</h3>
+			<div class="container">
+				
+			<div class="container-search">
+				<input placeholder="范围1-10000" type="text" name="text" id="text" value="" />
+				<button id="btn">查询</button>
+			</div>
+			<textarea name="textarea" class="textarea" id="textarea" rows="" cols=""></textarea>
+			</div>
+			
+		</div>
+
+		<script type="text/javascript">
+			var text = $('#text');//初始化
+			var btn = $('#btn');
+			var area =$('#textarea');
+		
+
+			function isSuShu(n) {
+//				将1-n内素数放入result数组
+				var flag = 0;
+				var result = [];
+				if(n == 0 || n == 1) {
+					result = [];
+				} else if(n == 2) {
+					result = [2];
+				} else if(n == 3 || n == 4) {
+					result = [2, 3]
+				} else {
+					result.push(2, 3);
+					for(var i = 5; i <= n; i++) {
+						for(var j = 2; j <= Math.sqrt(i); j++) {
+							if(i % j == 0) {
+								flag = 1;
+								break;
+							} else {
+								flag = 0;
+							}
+						}
+						if(flag == 0) {
+							result.push(i);
+						}
+					}
+				}
+				return result;
+			}
+			
+			function printSuShu(n){
+				var res = /^[0-9]+.?[0-9]*/; /*正则表达式*/
+				　　
+				if(!res.test(n)) {　　　　
+//					条件验证
+					alert("类型错误，请输入数字");
+					text.val("");　　
+				}else if(n==''){
+					alert('类型错误，请输入数字')
+				}else if(n <= 1 || n > 10000) {
+					alert('数字在1-10000间，请重新输入');
+					text.val("");　　
+				} else {
+					var result = isSuShu(n);
+					console.log(result);
+					area.val("所有结果如下：共有"+result.length+"个结果                                     "+result);
+				}
+			}
+			
+			btn.click(function(){
+//				按钮点击事件
+				var n = parseInt(text.val());　
+				printSuShu(n);
+				
+			});
+
+		</script>
+	</body>
+
+</html>

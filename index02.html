@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #img{
+            width: 500px;
+            height: 300px;
+            background: url("https://images6.alphacoders.com/944/thumb-1920-944540.jpg") center center no-repeat/cover;
+        }
+    </style>
+</head>
+<body>
+    <button id="show">隐藏</button>
+    <div id="img">
+        
+    </div>
+    <script>
+        var  show=document.getElementById('show');
+        var img=document.getElementById('img');
+        var current=1;
+        show.onclick=function(){
+            if(current===1){
+                img.style.display='none';
+                show.innerText='显示';
+                current=0;
+            }else{
+                img.style.display='block';
+                show.innerText='隐藏';
+                current=1;
+            }
+            
+        }
+    </script>
+</body>
+</html>

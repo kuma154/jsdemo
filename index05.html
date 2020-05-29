@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            width: 500px;
+            height: 300px;
+           
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>我的第一个JS程序</h1>
+    <p>这是一个段落</p>
+    <button id="btn" onclick="displayData()">切换</button>
+    <script>
+        var btn=document.getElementById('btn');
+        function displayData(){
+            document.getElementsByTagName('p')[0].innerHTML=Date();
+        }
+    </script> -->
+    <!-- <div id="div"></div>
+    <script>
+        var x=document.getElementById('div'); 
+        var r=0;
+        x.onclick=function(){
+       
+            if(r===0){
+                x.style.background="red";
+                r=1;
+              
+             
+            }else{
+                x.style.background="blue";
+                r=0;
+        
+            }
+            
+            
+        }
+    </script> -->
+
+    <img id="img" src="image\image01.jpg" alt="">
+<button id="prev">上一张</button>
+<button id="next">下一张</button>
+
+<input type="text" id="text">
+<button id="getnum">获取验证码</button>
+
+<script>
+    var img=document.getElementById('img');
+    var prev=document.getElementById('prev');
+    var next=document.getElementById('next');
+    var text=document.getElementById('text');
+    var getnum=document.getElementById('getnum');
+   var min=1,max=4,index=min;
+
+   function random(mina,maxa){
+        return Math.floor(Math.random()*(maxa)+mina);
+    }
+
+   function randombac(){
+        var num=random(0,255);
+        document.body.style.backgroundColor=`rgb(${random(0,255)},${random(0,255)},${random(0,255)})`;
+        console.log(document.body.style.backgroundColor);
+    }
+
+    next.onclick=function(){
+        if(index===max){
+            index=min;
+        }else{
+        index++;}
+         img.setAttribute('src',`image\\image0${index}.jpg`);
+         randombac();
+        
+    }
+    prev.onclick=function(){
+        if(index===min){
+            index=max;
+        }else{
+        index--;}
+         img.setAttribute('src',`image\\image0${index}.jpg`);
+         randombac();
+        
+    }
+  
+   
+    function randomNumber(){
+        var con="";
+        var indexLen=4;
+        var arr=[1,2,3,4,5,6,7,8,9];
+        for(var i=0;i<indexLen;i++){
+            var num=random(0,8);
+            con=con+arr[num];
+        }
+        return con;
+    }
+    getnum.onclick=function(){
+        text.value=randomNumber();
+    }
+
+  
+
+</script>
+
+</body>
+</html>

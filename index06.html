@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  name='myform'  method="POST">
+        <input type="text" name="fname">
+        <input type="button" onclick="return validateForm()" value="提交">
+    </form>
+    <script>
+        function validateForm(){
+            var fname=document.forms["myform"]["fname"].value;
+            var exp=/[0-9]{4,5}[a-z]{1,2}$/i;
+            if(fname==null||fname==""||!exp.test(fname)){
+                console.log(exp.test(fname));
+                alert('格式不正确');
+            }else{
+                alert('格式正确');
+                console.log(fname);
+            }
+        }
+    </script>
+</body>
+</html>
